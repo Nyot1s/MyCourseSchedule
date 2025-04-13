@@ -6,7 +6,7 @@
         android:icon="@drawable/magnifier"/>
 
     <item android:id="@+id/action_home"
-        android:title="@string/house_icon"
+        android:title="House"
         android:icon="@drawable/house"/>
 
 </menu>

@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">MyCourseSchedule</string>
-    <String name="house_icon">HouseIcon</String>
+    <string name="app_name">My Course Schedule</string>
+    <string name="house_icon">HouseIcon</string>
+
+    <!--Home Activity view -->
+    <string name="welcomeTitle">Welcome to My Course Schedule!</string>
+    <string name="buttonText">View Terms</string>
+
 </resources>
