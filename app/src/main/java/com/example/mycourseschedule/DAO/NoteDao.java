@@ -1,4 +1,11 @@
 package com.example.mycourseschedule.DAO;
 
-public class NoteDao {
+import androidx.room.Dao;
+
+@Dao
+public interface NoteDao {
+
+
+
+
 }

@@ -1,4 +1,6 @@
 package com.example.mycourseschedule.Activity;
 
-public class CourseListActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class CourseListActivity extends AppCompatActivity {
 }

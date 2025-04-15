@@ -1,4 +1,6 @@
 package com.example.mycourseschedule.Activity;
 
-public class NoteDetailActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class NoteDetailActivity extends AppCompatActivity {
 }

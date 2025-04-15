@@ -1,4 +1,10 @@
 package com.example.mycourseschedule.DAO;
 
-public class AssessmentDao {
+
+import androidx.room.Dao;
+
+@Dao
+public interface AssessmentDao {
+
+
 }

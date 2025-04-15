@@ -1,9 +1,14 @@
 package com.example.mycourseschedule.Models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 
+@Entity(tableName = "terms")
 public class Term {
     //variables
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String title;
     private Date startDate;

@@ -21,6 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- add all activity screens here and have them include extends AppCompatActivity VL -->
+        <activity android:name=".Activity.TermListActivity" android:exported="false"/>
+        <activity android:name=".Activity.TermDetailActivity" android:exported="false"/>
+        <activity android:name=".Activity.CourseListActivity" android:exported="false"/>
+        <activity android:name=".Activity.CourseDetailActivity" android:exported="false"/>
+        <activity android:name=".Activity.AssessmentListActivity" android:exported="false"/>
+        <activity android:name=".Activity.AssessmentDetailActivity" android:exported="false"/>
+        <activity android:name=".Activity.NoteListActivity" android:exported="false"/>
+        <activity android:name=".Activity.NoteDetailActivity" android:exported="false"/>
+
+
     </application>
 
 </manifest>

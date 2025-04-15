@@ -32,13 +32,26 @@ android {
 }
 
 dependencies {
-        //todo fix the dependencies listed, we are missing something for Term.java class
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.room.compiler)
+
+    // Room dependencies
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
+
+    // Explicitly include JetBrains annotations to resolve conflict
+    implementation(libs.jetbrains.annotations)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    // Optional: Add a constraint to force the newer annotations version
+    constraints {
+        implementation("org.jetbrains:annotations:23.0.0") {
+            because("Avoid conflict with com.intellij:annotations:12.0")
+        }
+    }
 }
