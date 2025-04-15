@@ -18,4 +18,5 @@ public interface TermDao {
     @Delete void delete(Term term);
     @Query("SELECT * FROM terms") LiveData<List<Term>> getAllTerms();
     @Query("SELECT COUNT(*) FROM courses WHERE termId = :termId") int getCourseCount(int termId);
+    @Query("SELECT * FROM terms WHERE id = :termId LIMIT 1") Term getTermById(int termId);
 }
