@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mycourseschedule.DAO.AssessmentDao;
 import com.example.mycourseschedule.DAO.CourseDao;
 import com.example.mycourseschedule.DAO.NoteDao;
 import com.example.mycourseschedule.Helper.AlertReceiver;
@@ -40,6 +41,7 @@ public class CourseDetailActivity extends AppCompatActivity {
     private Button saveButton, deleteButton, shareNoteButton, viewAssessmentsButton;
     private CourseDao courseDao;
     private NoteDao noteDao;
+    private AssessmentDao assessmentDao;
     private Course course;
     private Note note;
     private Executor executor = Executors.newSingleThreadExecutor();
@@ -54,7 +56,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         // Initialize DAOs
         courseDao = AppDatabase.getInstance(this).courseDao();
         noteDao = AppDatabase.getInstance(this).noteDao();
-
+        assessmentDao = AppDatabase.getInstance(this).assessmentDao();
         // Get courseId from Intent
         courseId = getIntent().getIntExtra("courseId", -1);
         if (courseId == -1) {
@@ -149,18 +151,27 @@ public class CourseDetailActivity extends AppCompatActivity {
 
         // Delete button
         deleteButton.setOnClickListener(v -> {
-            new AlertDialog.Builder(this)
-                    .setTitle("Delete Course")
-                    .setMessage("Are you sure you want to delete this course?")
-                    .setPositiveButton("Yes", (dialog, which) -> {
-                        executor.execute(() -> {
-                            courseDao.delete(course);
-                            if (note != null) noteDao.delete(note);
-                            runOnUiThread(() -> finish());
-                        });
-                    })
-                    .setNegativeButton("Cancel", null)
-                    .show();
+            executor.execute(() -> {
+                int assessmentCount = assessmentDao.getAssessmentCount(courseId);
+                runOnUiThread(() -> {
+                    if (assessmentCount > 0) {
+                        Toast.makeText(CourseDetailActivity.this, "Cannot delete course with assessments", Toast.LENGTH_SHORT).show();
+                    } else {
+                        new AlertDialog.Builder(CourseDetailActivity.this)
+                                .setTitle("Delete Course")
+                                .setMessage("Are you sure you want to delete this course?")
+                                .setPositiveButton("Yes", (dialog, which) -> {
+                                    executor.execute(() -> {
+                                        courseDao.delete(course);
+                                        if (note != null) noteDao.delete(note);
+                                        runOnUiThread(() -> finish());
+                                    });
+                                })
+                                .setNegativeButton("Cancel", null)
+                                .show();
+                    }
+                });
+            });
         });
 
         // Share note button

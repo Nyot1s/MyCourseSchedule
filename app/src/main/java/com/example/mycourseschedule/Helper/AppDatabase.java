@@ -17,7 +17,7 @@ import com.example.mycourseschedule.Models.Course;
 import com.example.mycourseschedule.Models.Note;
 import com.example.mycourseschedule.Models.Term;
 
-@Database(entities = {Term.class, Course.class, Assessment.class, Note.class}, version = 1)
+@Database(entities = {Term.class, Course.class, Assessment.class, Note.class}, version = 2)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase instance;

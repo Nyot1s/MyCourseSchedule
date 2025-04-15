@@ -27,4 +27,7 @@ public interface AssessmentDao {
 
     @Query("SELECT COUNT(*) FROM assessments WHERE courseId = :courseId")
     int getAssessmentCount(int courseId);
+
+    @Query("SELECT * FROM assessments WHERE id = :assessmentId LIMIT 1")
+    Assessment getAssessmentById(int assessmentId);
 }

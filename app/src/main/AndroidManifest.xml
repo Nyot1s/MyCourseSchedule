@@ -32,6 +32,7 @@
         <activity android:name=".Activity.NoteListActivity" android:exported="false"/>
         <activity android:name=".Activity.NoteDetailActivity" android:exported="false"/>
 
+
         <receiver android:name=".Helper.AlertReceiver"/>
 
     </application>
